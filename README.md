@@ -1,2 +1,2 @@
-# arvore-patricinha
-implementação de uma árvore patricia
+# Arvore-Patricia
+Implementação de Arvore Patrícia usando linguagem Python
