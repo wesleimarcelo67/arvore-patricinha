@@ -14,7 +14,7 @@ class Node:
     def getRadical(self, word):
         radical = ''
         index = 0
-        while index < len(word):
+        while index < len(word) and index < len(self.value):
             if self.value[index] == word[index]:
                 radical += word[index] 
             else :
