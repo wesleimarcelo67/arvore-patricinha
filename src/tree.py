@@ -8,46 +8,55 @@ class PatriciaTree:
 
     def __init__(self):
         self.nodes = 0
-        self.root = Node('---')
+        self.root = None
 
     def addWord(self, word):
-        return self._addWord(self.root, word)
-
-    def _addWord(self, node, word):
-        if node is None:
-            node.value = word
+        if self.root is None:
+            self.root = Node(word)
             self.nodes += 1
-            return True
         else:
-            if node == word:
-                return False
-            elif node.isRadical(word):
-                radical = node.getRadical(word)
-                nodeSuffix = node.getSuffix(word)
-                wordSuffix = word.removeprefix(radical)
+            node = self.root
 
-                if not node.hasChildren():
-                    node.value = radical
-                    if nodeSuffix < wordSuffix:
-                        node.left = Node(nodeSuffix)
-                        node.right = Node(wordSuffix)
+            while True:
+                IS_EQUALS = node.value == word
+
+                if IS_EQUALS:
+                    break
+
+                elif node.isRadical(word):
+                    radical = node.getRadical(word)
+                    nodeSuffix = node.getSuffix(word)
+                    wordSuffix = word.removeprefix(radical)
+
+                    if not node.hasChildren():
+                        node.value = radical
+                        if nodeSuffix < wordSuffix:
+                            if nodeSuffix != '':
+                                node.left = Node(nodeSuffix)
+                            if wordSuffix != '':
+                                node.right = Node(wordSuffix)
+                        else:
+                            if wordSuffix != '':
+                                node.left = Node(wordSuffix)
+                            if nodeSuffix != '':
+                                node.right = Node(nodeSuffix)
+                        self.nodes += 2
+                        break
                     else:
-                        node.left = Node(wordSuffix)
-                        node.right = Node(nodeSuffix)
-                    self.nodes += 2
-                    return True
-                else :
-                    if node.value < wordSuffix:
-                        self._addWord(node.right, wordSuffix)
-                    elif node.value > wordSuffix:
-                        self._addWord(node.left, wordSuffix)
+                        if node.value < wordSuffix:
+                           node = node.right
+                        elif node.value > wordSuffix:
+                           node = node.left
+                        word = wordSuffix
+                else: 
+                    break        
 
     def print(self):
         self._printTree(self.root)
 
     def _printTree(self, node):
         if node is not None:
-            print(node.value)
+            print(f'node -> {node.value}')
             if node.hasLeftChild():
                 self._printTree(node.left)
             if node.hasRightChild():
