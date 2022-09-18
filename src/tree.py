@@ -8,30 +8,39 @@ class PatriciaTree:
 
     def __init__(self):
         self.nodes = 0
-        self.root = None
+        self.root = Node('---')
 
     def addWord(self, word):
-        if self.root is None:
-            self.root = Node(word)
+        return self._addWord(self.root, word)
+
+    def _addWord(self, node, word):
+        if node is None:
+            node.value = word
             self.nodes += 1
             return True
         else:
-            if self.root == word:
+            if node == word:
                 return False
-            elif self.root.isRadical(word):
-                radical = self.root.getRadical(word)
-                rootSuffix = self.root.getSuffix(word)
+            elif node.isRadical(word):
+                radical = node.getRadical(word)
+                nodeSuffix = node.getSuffix(word)
                 wordSuffix = word.removeprefix(radical)
 
-                if not self.root.hasChildren():
-                    self.root.value = radical
-                    if rootSuffix < wordSuffix:
-                        self.root.left = Node(rootSuffix)
-                        self.root.right = Node(wordSuffix)
+                if not node.hasChildren():
+                    node.value = radical
+                    if nodeSuffix < wordSuffix:
+                        node.left = Node(nodeSuffix)
+                        node.right = Node(wordSuffix)
                     else:
-                        self.root.left = Node(wordSuffix)
-                        self.root.right = Node(rootSuffix)
+                        node.left = Node(wordSuffix)
+                        node.right = Node(nodeSuffix)
                     self.nodes += 2
+                    return True
+                else :
+                    if node.value < wordSuffix:
+                        self._addWord(node.right, wordSuffix)
+                    elif node.value > wordSuffix:
+                        self._addWord(node.left, wordSuffix)
 
     def print(self):
         self._printTree(self.root)
