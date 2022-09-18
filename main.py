@@ -1,6 +1,21 @@
-from src import tree as t
+from src.node import Node
+from src.tree import PatriciaTree
 
-node = t.getNode(5)
+str1= 'baa'
+str2 = 'bcaa'
 
-print(node.value)
+node1 = Node(str1)
+
+pt = PatriciaTree()
+
+pt.addWord('waldeco')
+pt.addWord('waldeci')
+
+pt.print()
+
+
+print(pt.nodes)
+
+
+
 
