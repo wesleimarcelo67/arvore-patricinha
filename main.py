@@ -1,15 +1,19 @@
-from src.node import Node
-from src.tree import PatriciaTree
+from modules.node import Node
+from modules.tree import PatriciaTree
 
-str1= 'baa'
+str1= ''
 str2 = 'bcaa'
 
 node1 = Node(str1)
 
 pt = PatriciaTree()
 
-pt.addWord('waldeco')
-pt.addWord('waldeci')
+pt.addWord('banana')
+pt.addWord('bandana')
+pt.addWord('banda')
+pt.addWord('bandada')
+
+
 
 pt.print()
 
