@@ -1,15 +1,24 @@
-from modules.nodes.internNode import Node
 from modules.tree import PatriciaTree
 
-str1 = 'abcs'
-str2 = 'abcaa'
 
-node1 = Node(0, 'a')
+str1 = {'value' : 'a'}
+str2 = str1
 
+str1 = 'b'
+str2 = str1
 
 pt = PatriciaTree()
 
-pt.insert('a')
-pt.search('ab')
+
+print(pt.insert('casamento'))
+print(pt.insert('casa'))
+print(pt.insert('casaea'))
+print(pt.insert('casay'))
+
+
+pt.print()
+
+
+
 
 

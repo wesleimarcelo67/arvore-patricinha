@@ -5,5 +5,16 @@ def getMismatchIndex(of: str, on: str) -> int:
     while index < len(of) and index < len(on):
 
         if of[index] != on[index]: 
-            return index
-    return -1
+            break
+        index += 1
+
+    return index
+
+def getSmaller(str1, str2):
+    return str1 if str1 > str2 else str2
+
+def getCharAtIndex(str, index):
+    try:
+        return str[index]
+    except:
+        return ''
