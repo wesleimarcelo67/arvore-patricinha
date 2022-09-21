@@ -1,4 +1,4 @@
-from modules.node import Node
+from modules.nodes.internNode import Node
 from modules.tree import PatriciaTree
 
 str1 = 'abcs'

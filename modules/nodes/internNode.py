@@ -1,4 +1,10 @@
-class Node:
+if __name__ == '__main__':
+    from node import Node
+else:
+    from modules.nodes.node import Node
+
+
+class InternNode(Node):
     def __init__(self, value: str = None, indexToGo: int = -1):
         self.value: str = value
         self.indexToGo: int = indexToGo
