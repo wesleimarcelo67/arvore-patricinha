@@ -81,8 +81,8 @@ class PatriciaTree:
                                     node.ancestor.rightChild.leftChild = Leaf(nodeValue)
                                     node.ancestor.rightChild.rightChild = Leaf(word)
                                   
-                                node.ancestor.rightChild.leftChild.ancestor = node.ancestor.leftChild
-                                node.ancestor.rightChild.rightChild.ancestor = node.ancestor.leftChild
+                                node.ancestor.rightChild.leftChild.ancestor = node.ancestor.rightChild
+                                node.ancestor.rightChild.rightChild.ancestor = node.ancestor.rightChild
 
                             break
                 else:
