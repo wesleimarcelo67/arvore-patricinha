@@ -21,9 +21,8 @@ class PatriciaTree:
         else:
             node = self.root
             while True:
-                IS_LEAF = isinstance(node, Leaf)
 
-                if IS_LEAF:
+                if helper.isLeaf(node):
                     if node.value == word:
                         return False
                     else:
@@ -74,11 +73,11 @@ class PatriciaTree:
                             else:
                                 node.ancestor.rightChild = InternNode(index, char)
 
-                                if nodeChar > wordChar:
+                                if nodeChar < wordChar:
                                     node.ancestor.rightChild.leftChild = Leaf(word)
                                     node.ancestor.rightChild.rightChild = Leaf(nodeValue)
 
-                                if nodeChar < wordChar:
+                                if nodeChar > wordChar:
                                     node.ancestor.rightChild.leftChild = Leaf(nodeValue)
                                     node.ancestor.rightChild.rightChild = Leaf(word)
                                   
@@ -97,8 +96,29 @@ class PatriciaTree:
                     else:
                         node = node.leftChild
 
+
+
     def search(self, word):
-        pass
+
+        node = self.root
+
+      
+        while True:
+        
+            if helper.isLeaf(node):
+                if node.value == word: 
+                    return Node
+                return -1
+            
+            else:
+                index = node.indexToGo
+                nodeChar = node.dismatchedChar
+                wordChar = word[index]
+                            
+                if nodeChar < wordChar:
+                    node = node.rightChild
+                else:
+                    node = node.leftChild
 
     def remove(self, word):
         pass
@@ -112,11 +132,10 @@ class PatriciaTree:
     def _printTree(self, node: Node, subtree):
         if Node is not None:
 
-            IS_LEAF = isinstance(node, Leaf)
-
-            if IS_LEAF:
-                print(
-                    f'Node -> {node.value} | Dismatch: {node.ancestor.dismatchedChar} | Path: {subtree} ')
+            if node.ancestor is None:
+                print(f'Node -> {node.value} | Path: {subtree} ')
+            elif helper.isLeaf(node):
+                print(f'Node -> {node.value} | Dismatch: {node.ancestor.dismatchedChar} | Path: {subtree} ')
 
             elif isinstance(node, InternNode):
                 self._printTree(node.leftChild, subtree + ' -> left')

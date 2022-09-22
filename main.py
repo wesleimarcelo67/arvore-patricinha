@@ -9,15 +9,18 @@ str2 = str1
 
 pt = PatriciaTree()
 
+search = 'sal'
 
-pt.insert('casa')
-pt.insert('casamento')
-pt.insert('casae')
-pt.insert('casaei')
-pt.insert('casati')
+pt.insert('romane')
+pt.insert('romanus')
+pt.insert('rubens')
+pt.insert('ruber')
+pt.insert('rubicon')
 
 
 
-pt.print()
+
+
+
 
 

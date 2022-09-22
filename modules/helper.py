@@ -1,3 +1,6 @@
+from modules.nodes.leaf import Leaf
+
+
 def getMismatchIndex(of: str, on: str) -> int:
     
     index = 0
@@ -11,10 +14,12 @@ def getMismatchIndex(of: str, on: str) -> int:
     return index
 
 def getSmaller(str1, str2):
-    return str1 if str1 > str2 else str2
+    return str1 if str1 < str2 else str2
 
 def getCharAtIndex(str, index):
     try:
         return str[index]
     except:
         return ''
+
+def isLeaf(node) -> bool: return isinstance(node, Leaf)
