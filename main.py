@@ -10,15 +10,14 @@ str2 = str1
 pt = PatriciaTree()
 
 
-print(pt.insert('casamento'))
-print(pt.insert('casa'))
-print(pt.insert('casaea'))
-print(pt.insert('casay'))
+pt.insert('casa')
+pt.insert('casamento')
+pt.insert('casae')
+pt.insert('casaei')
+pt.insert('casati')
+
 
 
 pt.print()
-
-
-
 
 
