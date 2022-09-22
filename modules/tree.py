@@ -1,10 +1,6 @@
-if __name__ == '__main__':
-    from nodes.internNode import *
-    from nodes.leaf import *
-else:
-    from modules.nodes.internNode import *
-    from modules.nodes.leaf import *
-    from modules import helper
+from modules.nodes.internNode import *
+from modules.nodes.leaf import *
+from modules import helper
 
 
 class PatriciaTree:
